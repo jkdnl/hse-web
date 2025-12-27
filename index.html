@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Movie Tracker</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="logo">The<br />Movie<br />Tracker</h1>
+
+            <form class="search-form" role="search">
+                <input
+                    type="search"
+                    placeholder="Search a movie or a series"
+                    aria-label="Search a movie or a series"
+                />
+            </form>
+        </header>
+
+        <main class="main">
+            <section class="movie-details">
+                <div class="movie-data">
+                    <img
+                        src="./media/poster.png"
+                        alt="The Gray Man official trailer thumbnail"
+                    />
+                    <article class="movie-info">
+                        <h2 class="movie-title">The Gray Man</h2>
+
+                        <div class="tags">
+                            <span class="tag">Action</span>
+                            <span class="tag">Sci-Fi</span>
+                        </div>
+
+                        <p class="description">
+                            A thief who steals corporate secrets through the use
+                            of dream-sharing technology is given the inverse
+                            task of planting an idea into the mind of a C.E.O.,
+                            but his tragic past may doom the project and his
+                            team to disaster.
+                        </p>
+
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span class="score">9.1/10</span>
+                            <span class="reviews">8k Reviews</span>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="movie-actions">
+                    <button class="watchlist-btn">
+                        <span class="icon">🔖</span>
+                        Add to watchlist
+                    </button>
+
+                    <figure class="trailer">
+                        <img
+                            src="./media/trailer.png"
+                            alt="The Gray Man official trailer thumbnail"
+                        />
+                        <span class="play">▶</span>
+                    </figure>
+                </aside>
+            </section>
+
+            <section class="seasons">
+                <header class="seasons-header">
+                    <h3>Seasons</h3>
+                    <nav class="season-list">
+                        <button class="season active">1</button>
+                        <button class="season">2</button>
+                        <button class="season">3</button>
+                        <button class="season">4</button>
+                    </nav>
+                </header>
+
+                <section class="episodes">
+                    <article class="episode">
+                        <img src="./media/ep1.png" alt="Pilot: Part 1" />
+                        <select>
+                            <option>Select Status</option>
+                        </select>
+                        <h4>Pilot: Part 1</h4>
+                    </article>
+
+                    <article class="episode">
+                        <img src="./media/ep2.png" alt="Raised by Another" />
+                        <select>
+                            <option>Select Status</option>
+                        </select>
+                        <h4>Raised by Another</h4>
+                    </article>
+
+                    <article class="episode">
+                        <img src="./media/ep3.png" alt="All the Best Cowboys" />
+                        <select>
+                            <option>Select Status</option>
+                        </select>
+                        <h4>All the Best Cowboys</h4>
+                    </article>
+
+                    <article class="episode">
+                        <img
+                            src="./media/ep4.png"
+                            alt="Whatever the Case May Be"
+                        />
+                        <select>
+                            <option>Select Status</option>
+                        </select>
+                        <h4>Whatever the Case May Be</h4>
+                    </article>
+                </section>
+            </section>
+        </main>
+    </body>
+</html>
