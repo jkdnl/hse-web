@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             episode.dataset.status = savedStatus;
         }
 
-        select.addEventListener("change", () => {
+        select.addEventListener("change", async () => {
             const status = select.value;
 
             episode.dataset.status = "";
@@ -27,9 +27,67 @@ document.addEventListener("DOMContentLoaded", () => {
             if (status) {
                 episode.dataset.status = status;
                 localStorage.setItem(`episode-status-${index}`, status);
+
+                try {
+                    const permissionGranted =
+                        await NotificationService.requestPermission();
+
+                    if (permissionGranted) {
+                        const episodeTitle =
+                            episode.querySelector("h4")?.textContent ??
+                            "Episode";
+
+                        NotificationService.notify("Episode status updated", {
+                            body: `${episodeTitle}: ${status.replace(
+                                "-",
+                                " "
+                            )}`,
+                            silent: true,
+                        });
+                    }
+                } catch (error) {
+                    console.error("Failed to send a notification:", error);
+                }
             } else {
                 localStorage.removeItem(`episode-status-${index}`);
             }
         });
     });
 });
+
+const NotificationService = {
+    isSupported() {
+        return "Notification" in window;
+    },
+
+    async requestPermission() {
+        if (!this.isSupported()) return false;
+
+        if (Notification.permission === "granted") return true;
+
+        if (Notification.permission === "denied") return false;
+
+        try {
+            const permission = await Notification.requestPermission();
+            return permission === "granted";
+        } catch (error) {
+            console.error(
+                "Please gtant permissions to send notifications:",
+                error
+            );
+            return false;
+        }
+    },
+
+    notify(title, options) {
+        if (!this.isSupported()) return;
+
+        if (Notification.permission !== "granted") return;
+
+        try {
+            new Notification(title, options);
+        } catch (error) {
+            console.error("Notification error:", error);
+        }
+    },
+};
