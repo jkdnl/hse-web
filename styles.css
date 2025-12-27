@@ -64,6 +64,13 @@ body {
     padding: 0.4rem 1rem;
     border-radius: 999px;
     font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+}
+
+.tag:hover {
+    background-color: #111;
+    color: #fff;
 }
 
 .description {
@@ -151,6 +158,28 @@ body {
     background: #d1d1d1;
 }
 
+.episode {
+    position: relative;
+    border: 2px solid transparent;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.episode[data-status="watched"] {
+    border-color: #2ecc71;
+}
+
+.episode[data-status="planned"] {
+    border-color: #f1c40f;
+}
+
+.episode[data-status="not-watched"] {
+    border-color: #e74c3c;
+}
+
+.episode:hover {
+    transform: translateY(-4px);
+}
+
 .episodes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -183,8 +212,13 @@ body {
     font-size: 1rem;
 }
 
-.footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
+.watchlist-btn,
+.season {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.watchlist-btn:hover,
+.season:hover {
+    background-color: #d6d6d6;
+    transform: translateY(-1px);
 }
